@@ -1,154 +1,117 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Candra Savira | Data analysis and forecasting portfolio</title>
+<meta name="description" content="Portfolio of Candra Savira, Business Statistics student at ITS: Power BI dashboards, time-series forecasting and machine learning projects.">
+<meta property="og:title" content="Candra Savira | Data analysis and forecasting portfolio">
+<meta property="og:description" content="Portfolio of Candra Savira, Business Statistics student at ITS: Power BI dashboards, time-series forecasting and machine learning projects.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0F2A47">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F2A47'/%3E%3Crect x='7' y='17' width='4' height='8' fill='%23F2A33A'/%3E%3Crect x='14' y='11' width='4' height='14' fill='%2314A098'/%3E%3Crect x='21' y='6' width='4' height='19' fill='%231B6CA8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="brand" href="index.html">Candra Savira</a>
+<nav class="nav" aria-label="Main"><a href="index.html#projects">Projects</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
+</div></header>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<div class="hero"><div class="wrap hero-grid">
+<div>
+<div class="kicker">Business Statistics &middot; Institut Teknologi Sepuluh Nopember (ITS), Surabaya</div>
+<h1>I turn messy data into clear business questions and answers.</h1>
+<p>I build dashboards and forecasting analyses with Power BI, Python and Excel. Below is my featured project, followed by coursework in time series and machine learning.</p>
+<div class="btns">
+<a class="btn btn-primary" href="projects/ev-charging/index.html">View featured project</a>
+<a class="btn btn-ghost" href="assets/files/Candra_Savira_CV.pdf" download>Download CV</a>
+</div>
+</div>
+<figure class="portrait"><img src="assets/images/candra.jpg" alt="Candra Savira presenting at a conference podium" width="720" height="806"><figcaption>Presenting at BASIC 2026</figcaption></figure>
+</div></div>
 
-    <!-- file icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<section id="projects"><div class="wrap">
+<div class="card featured">
+<div>
+<div class="eyebrow">Featured project</div>
+<h2>EV Charging Stations in Indonesia</h2>
+<p>A 4-page Power BI dashboard and a short analysis of 3,028 public charging stations: where they are, who runs them, and how fast they charge.</p>
+<div class="stats">
+<div class="stat"><b>3,028</b><span>stations analyzed</span></div>
+<div class="stat"><b>68.1%</b><span>located in Java</span></div>
+<div class="stat alt"><b>0.0%</b><span>ultra-rapid in Maluku and Papua</span></div>
+</div>
+<ul class="tags"><li>Power BI</li><li>DAX</li><li>Python</li><li>Excel</li></ul>
+<a class="btn btn-solid" href="projects/ev-charging/index.html">Read the case study</a>
+</div>
+<div class="preview">
+<h3>Stations by province, top 5</h3>
+<div class="bar"><span>DKI Jakarta</span><i><b style="width:100.0%"></b></i><span>731</span></div><div class="bar"><span>Jawa Barat</span><i><b style="width:73.6%"></b></i><span>538</span></div><div class="bar"><span>Banten</span><i><b style="width:40.4%"></b></i><span>295</span></div><div class="bar"><span>Jawa Timur</span><i><b style="width:33.5%"></b></i><span>245</span></div><div class="bar"><span>Jawa Tengah</span><i><b style="width:30.1%"></b></i><span>220</span></div>
+<small>Five provinces hold 67.0% of all stations.</small>
+</div>
+</div>
+</div></section>
 
-    <!-- ini css warna softpink -->
-    <link rel="stylesheet" href="style.css">
+<section><div class="wrap">
+<h2>More work</h2>
+<p class="lead">Coursework projects in time series and machine learning. Each page explains the question, the method and the result, with the report to download.</p>
+<div class="grid"><a class="card pcard" href="projects/usd-idr-volatility/index.html">
+<div class="eyebrow">Time-series forecasting · Deep learning</div><h3>Forecasting USD/IDR volatility with LSTM, GRU and CNN</h3><p>Group project: ten years of daily exchange rates, three neural networks, and a Streamlit dashboard that forecasts the next 30 business days.</p><div class="num">Test RMSE 2.35 &times; 10<sup>&minus;5</sup> (LSTM, best of three)</div><span class="more">Read the case study &rarr;</span></a><a class="card pcard" href="projects/ftse-arima-portfolio/index.html">
+<div class="eyebrow">Time-series forecasting · Investments</div><h3>ARIMA forecasts for an optimal FTSE All-World portfolio</h3><p>Six stocks picked by a CAPM-optimal portfolio, each modeled with its best ARIMA to check whether the portfolio weights still hold.</p><div class="num">6 stocks &middot; 405 trading days &middot; AICc model selection</div><span class="more">Read the case study &rarr;</span></a><a class="card pcard" href="projects/breast-cancer-knn/index.html">
+<div class="eyebrow">Machine learning · Classification</div><h3>Breast cancer diagnosis with K-Nearest Neighbor</h3><p>Benign versus malignant classification on the Wisconsin dataset, with the choice of K tested from 1 to 20.</p><div class="num">95.61% test accuracy at K = 3</div><span class="more">Read the case study &rarr;</span></a><a class="card pcard" href="projects/sonar-svm-knn/index.html">
+<div class="eyebrow">Machine learning · Hyperparameter tuning</div><h3>Sonar mines vs rocks: SVM and KNN, tuned two ways</h3><p>Two classifiers, two optimizers (Bayesian and genetic) and two train-test splits, compared on 208 sonar signals.</p><div class="num">Best test accuracy 92.86%</div><span class="more">Read the case study &rarr;</span></a></div>
+</div></section>
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-<!-- ini bagian awal nav bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Candra Savira</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="Candra Savira">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Our Product</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-<!-- bagian akhir navbar -->
+<section id="about"><div class="wrap">
+<h2>About</h2>
+<div class="two">
+<div class="card prose">
+<p>I am a Business Statistics student at ITS, expected to graduate in 2027. I like the part of analysis where a pile of rows becomes something a team can act on: a clean dataset, a clear chart, and an honest note on what the data cannot say.</p>
+<p>I also work as a teaching assistant for Data Exploration and Visualization, preparing hands-on dashboard material in Excel, Power BI, Looker Studio, Tableau, R Shiny and Streamlit.</p>
+<h3 style="margin-top:20px">Tools</h3>
+<ul class="tools">
+<li><img src="assets/icons/excel.svg" alt="" width="32" height="32"><span>Excel</span></li>
+<li><img src="assets/icons/powerbi.svg" alt="" width="32" height="32"><span>Power BI</span></li>
+<li><img src="assets/icons/python.svg" alt="" width="32" height="32"><span>Python</span></li>
+<li><img src="assets/icons/r.svg" alt="" width="32" height="32"><span>R</span></li>
+<li><img src="assets/icons/spss.svg" alt="" width="32" height="32"><span>SPSS</span></li>
+<li><img src="assets/icons/tableau.svg" alt="" width="32" height="32"><span>Tableau</span></li>
+<li><img src="assets/icons/streamlit.svg" alt="" width="32" height="32"><span>Streamlit</span></li>
+<li><img src="assets/icons/jupyter.svg" alt="" width="32" height="32"><span>Jupyter</span></li>
+<li><img src="assets/icons/colab.svg" alt="" width="32" height="32"><span>Google Colab</span></li>
+</ul>
+<h3 style="margin-top:20px">Methods</h3>
+<p class="mgroup">Business intelligence</p>
+<ul class="chips"><li>DAX</li><li>Power Query</li><li>Looker Studio</li><li>Dashboard design</li><li>Data cleaning and validation</li></ul>
+<p class="mgroup">Statistics</p>
+<ul class="chips"><li>Descriptive statistics</li><li>Hypothesis testing</li><li>Regression analysis</li><li>Time series (ARIMA, ADF test)</li><li>Portfolio analysis (CAPM, APT, Sharpe ratio)</li></ul>
+<p class="mgroup">Machine learning</p>
+<ul class="chips"><li>Classification (KNN, SVM)</li><li>Hyperparameter tuning (Bayesian optimization, genetic algorithm)</li><li>Model evaluation (accuracy, confusion matrix)</li><li>pandas, NumPy, scikit-learn</li></ul>
+</div>
+<div class="card">
+<h3>Experience and recognition</h3>
+<ul class="list">
+<li><b>Teaching Assistant, Data Exploration and Visualization</b><span>ITS &middot; Aug 2026 to present</span></li>
+<li><b>Head of Research</b><span>Kelompok Studi Pasar Modal (KSPM) ITS &middot; Jan to Jul 2026</span></li>
+<li><b>Oral Presenter</b><span>14th Basic and Applied Science International Conference (BASIC 2026) &middot; Oct 2026</span></li>
+<li><b>Best Participant</b><span>International Mobility Programme, Universiti Sains Malaysia &middot; Aug 2026</span></li>
+<li><b>Treasurer</b><span>IEEE Student Branch ITS &middot; Mar 2024 to Feb 2025</span></li>
+<li><b>Consumer Loan Intern</b><span>PT Bank Tabungan Negara (Persero) Tbk &middot; Jan to Mar 2025</span></li>
+</ul>
+</div>
+</div>
+</div></section>
 
-<!-- bagian awal home section -->
-<section>
-    <div class="containerfluid text-center color-special"> 
-        <!-- Content here -->
-        <i class="bi bi-person-circle" style="font-size: 8rem; color: cornflowerblue;"></i>
-        <h1> Candra Savira</h1>
-        <h6> A Dermatologist </h6>
-      </div>
-</section>
-<!-- bagian akhir home section -->
+<div class="wrap" id="contact"><div class="contact">
+<div><h2>Let's talk</h2><p>Open to internships in business development, data analysis and reporting. <a class="mail" href="mailto:tirayucandra1@gmail.com">tirayucandra1@gmail.com</a></p></div>
+<div class="btns" style="margin-top:0"><a class="btn btn-ghost" href="https://www.linkedin.com/in/candra-savira-8b4373289/" target="_blank" rel="noopener">LinkedIn</a><a class="btn btn-primary" href="assets/files/Candra_Savira_CV.pdf" download>Download CV (PDF)</a></div>
+</div></div>
 
-<!-- bagian awal about section -->
-<section>
-    <div class="container">
-        <!-- Content here -->
-        <div class="row text-center">
-            <div class="col">
-                <h2>About me</h2>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. beatae ut veritatis explicabo corrupti!</p>
-            </div>
-            <div class="col-4">
-                <p>Lorem ipsum dolor sit amet, consectetur ctetur perferendis laboriosam officia quibusdam aliquam facere.</p>
-            </div>
-        </div>
-      </div>
-</section>
-<!-- bagian akhir about section -->
-
-<!-- bagian awal galery section -->
-<section>
-    <div class="container-fluid color-special">
-        <div class="row text-center ">
-            <div class="col">
-                <h2>My Galerry</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col"><div class="card" style="width: 18rem;">
-                <img src="assets/507e4b12d718b39e543fa6f570f7d904.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div></div>
-            <div class="col"><div class="card" style="width: 18rem;">
-                <img src="assets/3474d8262b98093e2728a47665ea0d2d.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div></div>
-            <div class="col"><div class="card" style="width: 18rem;">
-                <img src="assets/946fef56a9b1625026e4a2c492ac4459.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div></div>
-        </div>
-    </div>
-</section>
-<!-- bagian akhir galerry section -->
-
-<!-- bagian awal contact me -->
-<section>
-    <div class="'container">
-        <div class="row text-center">
-            <div class="col">
-                <h2>Contact me</h2>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-5">
-                <form>
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Nama anda</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Email anda</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Pesan anda</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- bagian akhir contact me -->
-
-<!-- bagian awal footer -->
-<footer>
-    <div class="containerfluid text-center bg-dark text-light p-2">
-        <p> Created with love by yantosimpati</p>
-    </div>
-</footer>
-<!-- bagian akhir footer -->
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
+<footer><div class="wrap"><span>&copy; 2026 Candra Savira &middot; <a href="https://www.linkedin.com/in/candra-savira-8b4373289/" target="_blank" rel="noopener">LinkedIn</a></span><span>Business Statistics, Institut Teknologi Sepuluh Nopember (ITS)</span></div></footer>
+<script src="assets/site.js"></script>
+</body>
 </html>
