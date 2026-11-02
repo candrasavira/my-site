@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breast cancer classification with KNN | Candra Savira</title>
+<meta name="description" content="K-Nearest Neighbor classification of the Breast Cancer Wisconsin dataset, with a test of K from 1 to 20 and a confusion-matrix review.">
+<meta property="og:title" content="Breast cancer classification with KNN | Candra Savira">
+<meta property="og:description" content="K-Nearest Neighbor classification of the Breast Cancer Wisconsin dataset, with a test of K from 1 to 20 and a confusion-matrix review.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0F2A47">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F2A47'/%3E%3Crect x='7' y='17' width='4' height='8' fill='%23F2A33A'/%3E%3Crect x='14' y='11' width='4' height='14' fill='%2314A098'/%3E%3Crect x='21' y='6' width='4' height='19' fill='%231B6CA8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="brand" href="../../index.html">Candra Savira</a>
+<nav class="nav" aria-label="Main"><a href="../../index.html#projects">Projects</a><a href="../../index.html#about">About</a><a href="../../index.html#contact">Contact</a></nav>
+</div></header>
+<div class="phead"><div class="wrap">
+<a class="back" href="../../index.html#projects">&larr; All projects</a>
+<div class="kicker">Case study &middot; Machine learning</div>
+<h1>Breast cancer diagnosis with K-Nearest Neighbor</h1>
+<p>Classifying tumors as benign or malignant on the Breast Cancer Wisconsin dataset, and testing how the choice of K changes accuracy.</p>
+<div class="meta"><span>Type: <b>Course project, Machine Learning</b></span><span>Tools: <b>Python, scikit-learn</b></span><span>Data: <b>Breast Cancer Wisconsin (Kaggle / UCI)</b></span></div>
+</div></div><div class="wrap"><div class="statrow"><div class="card"><b>94.74%</b><span>accuracy with K = 5</span></div><div class="card"><b>95.61%</b><span>best accuracy (K = 1 and K = 3)</span></div><div class="card"><b>114</b><span>test cases</span></div><div class="card"><b>5</b><span>malignant cases missed at K = 5</span></div></div></div><div class="pbody"><section><div class="wrap"><h2>The question</h2><div class="prose"><p>Can a simple distance-based method tell benign tumors from malignant ones using cell measurements? KNN labels a new case by the majority class among its closest known cases, which makes it easy to explain, and the dataset is entirely numeric, which suits it.</p></div></div></section><section><div class="wrap"><h2>Method</h2><div class="prose"><ul><li>Features are numeric cell measurements (radius, texture, area, smoothness and others), each as a mean, a standard error and a worst value. The target is the diagnosis, B or M.</li><li>80% training and 20% test split, stratified so both sets keep the same share of benign and malignant cases.</li><li>Standardized the features using the training data only, then applied the same scaling to the test data, so no information from the test set leaks into training.</li><li>Fitted KNN with K = 5 as a baseline, then tried every K from 1 to 20.</li></ul></div></div></section><section><div class="wrap"><h2>Results</h2><div class="prose"><ul><li>The K = 5 baseline reached 94.74% accuracy.</li><li>The best accuracy, 95.61%, came from K = 1 and K = 3. I recommend K = 3, because it scores the same while being less sensitive to a single neighbor.</li><li>The lowest accuracy, 92.98%, came from K = 16 and K = 17, so performance stays in a narrow band across K.</li></ul></div><div class="tablewrap"><table><thead><tr><th class="">K = 5 confusion matrix</th><th class="n">Predicted benign</th><th class="n">Predicted malignant</th></tr></thead><tbody><tr><td class="">Actual benign</td><td class="n">71</td><td class="n">1</td></tr><tr><td class="">Actual malignant</td><td class="n">5</td><td class="n">37</td></tr></tbody></table></div></div></section><section><div class="wrap"><h2>Reading the result</h2><div class="prose"><p>The model is accurate overall, but the 5 malignant cases it labeled benign matter most (malignant recall is 0.88). In a screening setting, a missed malignant case costs more than a false alarm, so a next step would be to tune for recall rather than accuracy alone.</p></div></div></section><section><div class="wrap"><h2>Files</h2><div class="files"><a class="btn btn-solid" href="../../assets/files/Breast_cancer_KNN_report.pdf" download>Report (PDF)</a></div></div></section></div>
+<footer><div class="wrap"><span>&copy; 2026 Candra Savira &middot; <a href="https://www.linkedin.com/in/candra-savira-8b4373289/" target="_blank" rel="noopener">LinkedIn</a></span><span>Business Statistics, Institut Teknologi Sepuluh Nopember (ITS)</span></div></footer>
+<script src="../../assets/site.js"></script>
+</body>
+</html>
