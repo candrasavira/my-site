@@ -1,451 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consumer Loan & Credit Risk SQL Analytics — Candra Savira</title>
-  <link rel="stylesheet" href="../../assets/css/style.css">
-  <style>
-    :root {
-      --primary: #102A43;
-      --accent: #2E95EA;
-      --accent-warm: #F59E0B;
-      --bg-light: #F8FAFC;
-      --card-bg: #FFFFFF;
-      --border-color: #E2E8F0;
-      --text-main: #1E293B;
-      --text-muted: #64748B;
-    }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.65;
-      color: var(--text-main);
-      background-color: var(--bg-light);
-      margin: 0;
-      padding: 0;
-    }
-    .project-header {
-      background: linear-gradient(135deg, #0C1E4A 0%, #102A43 100%);
-      color: #FFFFFF;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .project-header .container {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .badge-pill {
-      display: inline-block;
-      background: rgba(46, 149, 234, 0.25);
-      border: 1px solid #2E95EA;
-      color: #93C5FD;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      padding: 6px 16px;
-      border-radius: 999px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-    .project-title {
-      font-size: 38px;
-      font-weight: 800;
-      margin: 0 0 16px 0;
-      line-height: 1.25;
-    }
-    .project-subtitle {
-      font-size: 18px;
-      color: #CBD5E1;
-      max-width: 780px;
-      margin: 0 auto 28px auto;
-    }
-    .project-meta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: left;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      padding: 20px 28px;
-    }
-    .meta-item strong {
-      display: block;
-      color: #93C5FD;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .meta-item span {
-      font-size: 15px;
-      font-weight: 600;
-    }
-    .main-container {
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .disclaimer-banner {
-      background: #EFF6FF;
-      border-left: 4px solid #2E95EA;
-      padding: 16px 20px;
-      border-radius: 8px;
-      margin-bottom: 36px;
-      font-size: 14.5px;
-      color: #1E3A8A;
-    }
-    .content-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 36px 40px;
-      margin-bottom: 36px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-    }
-    .section-heading {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--primary);
-      margin-top: 0;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .section-heading::before {
-      content: "";
-      display: inline-block;
-      width: 6px;
-      height: 24px;
-      background: var(--accent);
-      border-radius: 4px;
-    }
-    .kpi-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 18px;
-      margin: 24px 0;
-    }
-    .kpi-card {
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      border-radius: 14px;
-      padding: 20px;
-      text-align: center;
-    }
-    .kpi-num {
-      font-size: 32px;
-      font-weight: 900;
-      color: #18439C;
-      line-height: 1.1;
-      margin-bottom: 6px;
-    }
-    .kpi-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #64748B;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .img-box {
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      overflow: hidden;
-      margin: 24px 0;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-    }
-    .img-box img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .code-box {
-      background: #0F172A;
-      color: #E2E8F0;
-      border-radius: 12px;
-      padding: 20px 24px;
-      font-family: 'Fira Code', 'Consolas', monospace;
-      font-size: 13.5px;
-      line-height: 1.6;
-      overflow-x: auto;
-      margin: 20px 0;
-    }
-    .code-box pre {
-      margin: 0;
-    }
-    .code-keyword { color: #38BDF8; font-weight: bold; }
-    .code-func { color: #FBBF24; }
-    .code-str { color: #34D399; }
-    .code-comment { color: #64748B; font-style: italic; }
-    table.data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 14px;
-    }
-    table.data-table th, table.data-table td {
-      padding: 12px 16px;
-      text-align: left;
-      border-bottom: 1px solid #E2E8F0;
-    }
-    table.data-table th {
-      background: #F1F5F9;
-      color: #0F2B48;
-      font-weight: 700;
-    }
-    .btn-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin: 28px 0;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 15px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-primary {
-      background: #18439C;
-      color: #FFFFFF;
-    }
-    .btn-primary:hover {
-      background: #0C1E4A;
-    }
-    .btn-outline {
-      border: 2px solid #CBD5E1;
-      color: #334155;
-    }
-    .btn-outline:hover {
-      border-color: #18439C;
-      color: #18439C;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Candra Savira | Data analysis and forecasting portfolio</title>
+<meta name="description" content="Portfolio of Candra Savira, Business Statistics student at ITS: Power BI dashboards, time-series forecasting and machine learning projects.">
+<meta property="og:title" content="Candra Savira | Data analysis and forecasting portfolio">
+<meta property="og:description" content="Portfolio of Candra Savira, Business Statistics student at ITS: Power BI dashboards, time-series forecasting and machine learning projects.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0F2A47">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F2A47'/%3E%3Crect x='7' y='17' width='4' height='8' fill='%23F2A33A'/%3E%3Crect x='14' y='11' width='4' height='14' fill='%2314A098'/%3E%3Crect x='21' y='6' width='4' height='19' fill='%231B6CA8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+<header class="site-header"><div class="wrap">
+<a class="brand" href="index.html">Candra Savira</a>
+<nav class="nav" aria-label="Main"><a href="index.html#projects">Projects</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
+</div></header>
 
-  <header class="project-header">
-    <div class="container">
-      <div class="badge-pill">SQL &amp; Relational Database Analytics · Banking Portfolio</div>
-      <h1 class="project-title">Consumer Loan &amp; Credit Risk Portfolio Analytics</h1>
-      <p class="project-subtitle">
-        End-to-end analytical SQL queries on a 4-table relational database to evaluate loan disbursement, borrower Debt-to-Income (DTI) default profiles, regional branch credit quality, and repayment cohort migration.
-      </p>
+<div class="hero"><div class="wrap hero-grid">
+<div>
+<div class="kicker">Business Statistics &middot; Institut Teknologi Sepuluh Nopember (ITS), Surabaya</div>
+<h1>I turn messy data into clear business questions and answers.</h1>
+<p>I build dashboards and forecasting analyses with Power BI, Python and Excel. Below is my featured project, followed by coursework in time series and machine learning.</p>
+<div class="btns">
+<a class="btn btn-primary" href="projects/ev-charging/index.html">View featured project</a>
+<a class="btn btn-ghost" href="assets/files/Candra_Savira_CV.pdf" download>Download CV</a>
+</div>
+</div>
+<figure class="portrait"><img src="assets/images/candra.jpg" alt="Candra Savira presenting at a conference podium" width="720" height="806"><figcaption>Presenting at BASIC 2026</figcaption></figure>
+</div></div>
 
-      <div class="project-meta-grid">
-        <div class="meta-item">
-          <strong>Database &amp; Engine</strong>
-          <span>PostgreSQL / SQLite</span>
-        </div>
-        <div class="meta-item">
-          <strong>SQL Techniques</strong>
-          <span>CTEs, Window Functions, JOINs</span>
-        </div>
-        <div class="meta-item">
-          <strong>Data Scope</strong>
-          <span>1,500 Loans · 18,000 Installments</span>
-        </div>
-        <div class="meta-item">
-          <strong>Business Focus</strong>
-          <span>NPL Rate, DTI &amp; Branch Ranking</span>
-        </div>
-      </div>
-    </div>
-  </header>
+<section id="projects"><div class="wrap">
+<div class="card featured">
+<div>
+<div class="eyebrow">Featured project</div>
+<h2>EV Charging Stations in Indonesia</h2>
+<p>A 4-page Power BI dashboard and a short analysis of 3,028 public charging stations: where they are, who runs them, and how fast they charge.</p>
+<div class="stats">
+<div class="stat"><b>3,028</b><span>stations analyzed</span></div>
+<div class="stat"><b>68.1%</b><span>located in Java</span></div>
+<div class="stat alt"><b>0.0%</b><span>ultra-rapid in Maluku and Papua</span></div>
+</div>
+<ul class="tags"><li>Power BI</li><li>DAX</li><li>Python</li><li>Excel</li></ul>
+<a class="btn btn-solid" href="projects/ev-charging/index.html">Read the case study</a>
+</div>
+<div class="preview">
+<h3>Stations by province, top 5</h3>
+<div class="bar"><span>DKI Jakarta</span><i><b style="width:100.0%"></b></i><span>731</span></div><div class="bar"><span>Jawa Barat</span><i><b style="width:73.6%"></b></i><span>538</span></div><div class="bar"><span>Banten</span><i><b style="width:40.4%"></b></i><span>295</span></div><div class="bar"><span>Jawa Timur</span><i><b style="width:33.5%"></b></i><span>245</span></div><div class="bar"><span>Jawa Tengah</span><i><b style="width:30.1%"></b></i><span>220</span></div>
+<small>Five provinces hold 67.0% of all stations.</small>
+</div>
+</div>
+</div></section>
 
-  <main class="main-container">
+<section><div class="wrap">
+<h2>More work</h2>
+<p class="lead">Coursework projects in time series and machine learning. Each page explains the question, the method and the result, with the report to download.</p>
+<div class="grid"><a class="card pcard" href="projects/consumer-loan-sql/index.html">
+<div class="eyebrow">SQL · Relational Database · Banking</div><h3>Consumer loan &amp; credit risk SQL analytics</h3><p>Relational database design (4-table star schema) and advanced analytical SQL queries (CTEs, Window Functions, multi-table JOINs) evaluating 1,500 credit facilities across 10 branch networks.</p><div class="num">1,500 loans &middot; 18k repayments &middot; CTE &amp; Window Functions</div><span class="more">Read the case study &rarr;</span></a><a class="card pcard" href="projects/usd-idr-volatility/index.html">
+<div class="eyebrow">Time-series forecasting · Deep learning</div><h3>Forecasting USD/IDR volatility with LSTM, GRU and CNN</h3><p>Group project: ten years of daily exchange rates, three neural networks, and a Streamlit dashboard that forecasts the next 30 business days.</p><div class="num">Test RMSE 2.35 &times; 10<sup>&minus;5</sup> (LSTM, best of three)</div><span class="more">Read the case study &rarr;</span></a><a class="card pcard" href="projects/ftse-arima-portfolio/index.html">
+<div class="eyebrow">Time-series forecasting · Investments</div><h3>ARIMA forecasts for an optimal FTSE All-World portfolio</h3><p>Six stocks picked by a CAPM-optimal portfolio, each modeled with its best ARIMA to check whether the portfolio weights still hold.</p><div class="num">6 stocks &middot; 405 trading days &middot; AICc model selection</div><span class="more">Read the case study &rarr;</span></a><a class="card pcard" href="projects/breast-cancer-knn/index.html">
+<div class="eyebrow">Machine learning · Classification</div><h3>Breast cancer diagnosis with K-Nearest Neighbor</h3><p>Benign versus malignant classification on the Wisconsin dataset, with the choice of K tested from 1 to 20.</p><div class="num">95.61% test accuracy at K = 3</div><span class="more">Read the case study &rarr;</span></a><a class="card pcard" href="projects/sonar-svm-knn/index.html">
+<div class="eyebrow">Machine learning · Hyperparameter tuning</div><h3>Sonar mines vs rocks: SVM and KNN, tuned two ways</h3><p>Two classifiers, two optimizers (Bayesian and genetic) and two train-test splits, compared on 208 sonar signals.</p><div class="num">Best test accuracy 92.86%</div><span class="more">Read the case study &rarr;</span></a></div>
+</div></section>
 
-    <div class="disclaimer-banner">
-      <strong>Confidentiality &amp; Data Ethics Note:</strong>
-      Inspired by real-world consumer loan administration and verification workflows observed during my internship at <strong>PT Bank Tabungan Negara (Persero) Tbk</strong>, this project utilizes a synthetic benchmark relational credit database to fully protect banking client privacy and adhere to data governance standards.
-    </div>
+<section id="about"><div class="wrap">
+<h2>About</h2>
+<div class="two">
+<div class="card prose">
+<p>I am a Business Statistics student at ITS, expected to graduate in 2027. I like the part of analysis where a pile of rows becomes something a team can act on: a clean dataset, a clear chart, and an honest note on what the data cannot say.</p>
+<p>I also work as a teaching assistant for Data Exploration and Visualization, preparing hands-on dashboard material in Excel, Power BI, Looker Studio, Tableau, R Shiny and Streamlit.</p>
+<h3 style="margin-top:20px">Tools</h3>
+<ul class="tools">
+<li><img src="assets/icons/sql.svg" alt="" width="32" height="32"><span>SQL / DB</span></li>
+<li><img src="assets/icons/excel.svg" alt="" width="32" height="32"><span>Excel</span></li>
+<li><img src="assets/icons/powerbi.svg" alt="" width="32" height="32"><span>Power BI</span></li>
+<li><img src="assets/icons/python.svg" alt="" width="32" height="32"><span>Python</span></li>
+<li><img src="assets/icons/r.svg" alt="" width="32" height="32"><span>R</span></li>
+<li><img src="assets/icons/spss.svg" alt="" width="32" height="32"><span>SPSS</span></li>
+<li><img src="assets/icons/tableau.svg" alt="" width="32" height="32"><span>Tableau</span></li>
+<li><img src="assets/icons/streamlit.svg" alt="" width="32" height="32"><span>Streamlit</span></li>
+<li><img src="assets/icons/jupyter.svg" alt="" width="32" height="32"><span>Jupyter</span></li>
+<li><img src="assets/icons/colab.svg" alt="" width="32" height="32"><span>Google Colab</span></li>
+</ul>
+<h3 style="margin-top:20px">Methods</h3>
+<p class="mgroup">Business intelligence</p>
+<ul class="chips"><li>SQL querying</li><li>Relational database design</li><li>DAX</li><li>Power Query</li><li>Looker Studio</li><li>Dashboard design</li><li>Data cleaning and validation</li></ul>
+<p class="mgroup">Statistics</p>
+<ul class="chips"><li>Descriptive statistics</li><li>Hypothesis testing</li><li>Regression analysis</li><li>Time series (ARIMA, ADF test)</li><li>Portfolio analysis (CAPM, APT, Sharpe ratio)</li></ul>
+<p class="mgroup">Machine learning</p>
+<ul class="chips"><li>Classification (KNN, SVM)</li><li>Hyperparameter tuning (Bayesian optimization, genetic algorithm)</li><li>Model evaluation (accuracy, confusion matrix)</li><li>pandas, NumPy, scikit-learn</li></ul>
+</div>
+<div class="card">
+<h3>Experience and recognition</h3>
+<ul class="list">
+<li><b>Teaching Assistant, Data Exploration and Visualization</b><span>ITS &middot; Aug 2026 to present</span></li>
+<li><b>Head of Research</b><span>Kelompok Studi Pasar Modal (KSPM) ITS &middot; Jan to Jul 2026</span></li>
+<li><b>Oral Presenter</b><span>14th Basic and Applied Science International Conference (BASIC 2026) &middot; Oct 2026</span></li>
+<li><b>Best Participant</b><span>International Mobility Programme, Universiti Sains Malaysia &middot; Aug 2026</span></li>
+<li><b>Treasurer</b><span>IEEE Student Branch ITS &middot; Mar 2024 to Feb 2025</span></li>
+<li><b>Consumer Loan Intern</b><span>PT Bank Tabungan Negara (Persero) Tbk &middot; Jan to Mar 2025</span></li>
+</ul>
+</div>
+</div>
+</div></section>
 
-    <!-- Section 1: Executive Summary -->
-    <section class="content-section">
-      <h2 class="section-heading">1. Executive Portfolio Summary &amp; Key Metrics</h2>
-      <p>
-        An executive view of loan origination and risk exposure across 1,500 credit facilities disbursed between January 2024 and December 2025 across 10 branch networks in Indonesia.
-      </p>
+<div class="wrap" id="contact"><div class="contact">
+<div><h2>Let's talk</h2><p>Open to internships in business development, data analysis and reporting. <a class="mail" href="mailto:tirayucandra1@gmail.com">tirayucandra1@gmail.com</a></p></div>
+<div class="btns" style="margin-top:0"><a class="btn btn-ghost" href="https://www.linkedin.com/in/candra-savira-8b4373289/" target="_blank" rel="noopener">LinkedIn</a><a class="btn btn-primary" href="assets/files/Candra_Savira_CV.pdf" download>Download CV (PDF)</a></div>
+</div></div>
 
-      <div class="kpi-row">
-        <div class="kpi-card">
-          <div class="kpi-num">1,500</div>
-          <div class="kpi-label">Disbursed Facilities</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-num">Rp 693.4 B</div>
-          <div class="kpi-label">Total Principal</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-num">14.60%</div>
-          <div class="kpi-label">NPL Account Ratio</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-num">20.66%</div>
-          <div class="kpi-label">NPL Principal Exposure</div>
-        </div>
-      </div>
-
-      <p>
-        <strong>Analytical Takeaway:</strong> While accounts in default (Kol-3 to Kol-5) represent 14.60% of total borrower accounts, they account for <strong>20.66% of total principal value (Rp 143.27 Billion)</strong>. This divergence reflects a higher incidence of delinquency among larger loan facilities (commercial KPR vs. subsidized KPR), underscoring the necessity of stricter pre-disbursement Debt-to-Income (DTI) screening.
-      </p>
-    </section>
-
-    <!-- Section 2: Schema Architecture -->
-    <section class="content-section">
-      <h2 class="section-heading">2. Relational Database Schema (Star / Snowflake Architecture)</h2>
-      <p>
-        The data is normalized across 4 relational tables, supporting efficient multi-table joins without analytical redundancy:
-      </p>
-      <ul>
-        <li><code>dim_borrowers</code>: 1,200 unique borrowers with monthly income, credit score, and employment classification.</li>
-        <li><code>dim_branches</code>: 10 regional branch offices across East Java, Central Java, West Java, DKI Jakarta, Bali, and Sulawesi.</li>
-        <li><code>fct_loans</code>: 1,500 loan accounts tracking principal, interest rate, tenor, collateral value, and OJK Kol status.</li>
-        <li><code>fct_repayments</code>: 18,000 monthly repayment records recording due date, payment date, installment amount, and Days Past Due (DPD).</li>
-      </ul>
-
-      <div class="img-box">
-        <img src="assets/sql_loan_erd.png" alt="Relational Database Schema ERD">
-      </div>
-    </section>
-
-    <!-- Section 3: Advanced SQL Queries -->
-    <section class="content-section">
-      <h2 class="section-heading">3. Advanced Analytical SQL Queries</h2>
-
-      <h3>Query 2: Debt-to-Income (DTI) Risk Tiering &amp; Default Matrix</h3>
-      <p>
-        Evaluates borrower financial leverage by computing monthly installment against verified income, grouping accounts into 4 risk tiers via CTEs, and calculating segment-level default contribution:
-      </p>
-
-      <div class="code-box"><pre>
-<span class="code-keyword">WITH</span> borrower_installments <span class="code-keyword">AS</span> (
-    <span class="code-keyword">SELECT</span> 
-        l.loan_id,
-        b.monthly_income,
-        b.credit_score,
-        r.installment_amount,
-        l.loan_status,
-        <span class="code-func">ROUND</span>((r.installment_amount / b.monthly_income) * 100.0, 2) <span class="code-keyword">AS</span> dti_pct
-    <span class="code-keyword">FROM</span> fct_loans l
-    <span class="code-keyword">JOIN</span> dim_borrowers b <span class="code-keyword">ON</span> l.borrower_id = b.borrower_id
-    <span class="code-keyword">JOIN</span> (
-        <span class="code-keyword">SELECT</span> loan_id, <span class="code-func">MAX</span>(installment_amount) <span class="code-keyword">AS</span> installment_amount 
-        <span class="code-keyword">FROM</span> fct_repayments 
-        <span class="code-keyword">GROUP BY</span> loan_id
-    ) r <span class="code-keyword">ON</span> l.loan_id = r.loan_id
-),
-dti_segments <span class="code-keyword">AS</span> (
-    <span class="code-keyword">SELECT</span> 
-        loan_id,
-        <span class="code-keyword">CASE</span> 
-            <span class="code-keyword">WHEN</span> dti_pct &lt; 25.0 <span class="code-keyword">THEN</span> <span class="code-str">'Low Risk (DTI &lt; 25%)'</span>
-            <span class="code-keyword">WHEN</span> dti_pct <span class="code-keyword">BETWEEN</span> 25.0 <span class="code-keyword">AND</span> 35.0 <span class="code-keyword">THEN</span> <span class="code-str">'Moderate Risk (DTI 25-35%)'</span>
-            <span class="code-keyword">WHEN</span> dti_pct <span class="code-keyword">BETWEEN</span> 35.01 <span class="code-keyword">AND</span> 45.0 <span class="code-keyword">THEN</span> <span class="code-str">'High Risk (DTI 35-45%)'</span>
-            <span class="code-keyword">ELSE</span> <span class="code-str">'Critical Risk (DTI &gt; 45%)'</span>
-        <span class="code-keyword">END AS</span> dti_bracket,
-        dti_pct,
-        credit_score,
-        <span class="code-keyword">CASE WHEN</span> loan_status <span class="code-keyword">LIKE</span> <span class="code-str">'%Kol-3%'</span> <span class="code-keyword">OR</span> loan_status <span class="code-keyword">LIKE</span> <span class="code-str">'%Kol-4%'</span> <span class="code-keyword">OR</span> loan_status <span class="code-keyword">LIKE</span> <span class="code-str">'%Kol-5%'</span> 
-             <span class="code-keyword">THEN</span> 1 <span class="code-keyword">ELSE</span> 0 <span class="code-keyword">END AS</span> is_npl
-    <span class="code-keyword">FROM</span> borrower_installments
-)
-<span class="code-keyword">SELECT</span> 
-    dti_bracket,
-    <span class="code-func">COUNT</span>(*) <span class="code-keyword">AS</span> total_loans,
-    <span class="code-func">ROUND</span>(<span class="code-func">AVG</span>(dti_pct), 1) <span class="code-keyword">AS</span> avg_dti_pct,
-    <span class="code-func">ROUND</span>(<span class="code-func">AVG</span>(credit_score), 0) <span class="code-keyword">AS</span> avg_credit_score,
-    <span class="code-func">SUM</span>(is_npl) <span class="code-keyword">AS</span> npl_loans,
-    <span class="code-func">ROUND</span>((<span class="code-func">CAST</span>(<span class="code-func">SUM</span>(is_npl) <span class="code-keyword">AS REAL</span>) / <span class="code-func">COUNT</span>(*)) * 100.0, 2) <span class="code-keyword">AS</span> default_rate_pct,
-    <span class="code-func">ROUND</span>(
-        (<span class="code-func">CAST</span>(<span class="code-func">SUM</span>(is_npl) <span class="code-keyword">AS REAL</span>) / <span class="code-func">SUM</span>(<span class="code-func">SUM</span>(is_npl)) <span class="code-keyword">OVER</span> ()) * 100.0, 
-        2
-    ) <span class="code-keyword">AS</span> share_of_total_defaults_pct
-<span class="code-keyword">FROM</span> dti_segments
-<span class="code-keyword">GROUP BY</span> dti_bracket
-<span class="code-keyword">ORDER BY</span> avg_dti_pct <span class="code-keyword">ASC</span>;
-</pre></div>
-
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>DTI Risk Bracket</th>
-            <th>Total Loans</th>
-            <th>Avg DTI (%)</th>
-            <th>Avg Credit Score</th>
-            <th>Default Rate (%)</th>
-            <th>Share of Total NPLs (%)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Low Risk (&lt; 25%)</strong></td>
-            <td>437</td>
-            <td>18.4%</td>
-            <td>712</td>
-            <td>1.60%</td>
-            <td>3.20%</td>
-          </tr>
-          <tr>
-            <td><strong>Moderate Risk (25-35%)</strong></td>
-            <td>160</td>
-            <td>29.8%</td>
-            <td>698</td>
-            <td>2.50%</td>
-            <td>1.83%</td>
-          </tr>
-          <tr>
-            <td><strong>High Risk (35-45%)</strong></td>
-            <td>120</td>
-            <td>40.1%</td>
-            <td>684</td>
-            <td>4.17%</td>
-            <td>2.28%</td>
-          </tr>
-          <tr>
-            <td><strong style="color:#DC2626;">Critical Risk (&gt; 45%)</strong></td>
-            <td>783</td>
-            <td>64.2%</td>
-            <td>642</td>
-            <td><strong>26.05%</strong></td>
-            <td><strong>92.69%</strong></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="img-box">
-        <img src="assets/sql_analytics_results.png" alt="SQL Analytics Results & Branch Ranking">
-      </div>
-    </section>
-
-    <!-- Section 4: Business Insights & Recommendations -->
-    <section class="content-section">
-      <h2 class="section-heading">4. Business Insights &amp; Credit Policy Recommendations</h2>
-      <ol>
-        <li>
-          <strong>Implement Hard DTI Ceiling at 40%:</strong> Over <strong>92.69% of all loan defaults</strong> originated from borrowers with DTI exceeding 45%. Capping DTI at 40% for non-subsidized commercial facilities would eliminate nearly 80% of projected NPL losses.
-        </li>
-        <li>
-          <strong>Branch-Specific Credit Audit (KCU Sidoarjo vs KCP Mulyosari):</strong> KCU Sidoarjo showed the highest default rate (19.08%, Rank #10 in credit quality) despite being #3 in disbursement volume, indicating underwriting laxity. Conversely, KCP Surabaya Mulyosari achieved the lowest NPL rate (10.87%) through disciplined verification.
-        </li>
-        <li>
-          <strong>Subsidized Housing (KPR Bersubsidi) Strong Asset Quality:</strong> Subsidized KPR showed exceptional credit quality with an NPL rate of only <strong>3.17%</strong>, supported by fixed 5.0% interest rates and government-backed salary deduction programs.
-        </li>
-      </ol>
-
-      <div class="btn-row">
-        <a class="btn btn-primary" href="assets/analytics_queries.sql" download>📥 Download Complete SQL Script (.sql)</a>
-        <a class="btn btn-outline" href="../../index.html#projects">⬅️ Back to All Projects</a>
-      </div>
-    </section>
-
-  </main>
-
+<footer><div class="wrap"><span>&copy; 2026 Candra Savira &middot; <a href="https://www.linkedin.com/in/candra-savira-8b4373289/" target="_blank" rel="noopener">LinkedIn</a></span><span>Business Statistics, Institut Teknologi Sepuluh Nopember (ITS)</span></div></footer>
+<script src="assets/site.js"></script>
 </body>
 </html>
